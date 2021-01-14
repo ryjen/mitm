@@ -1,15 +1,6 @@
 
 ## MITM Demo
 
-This demonstration will perform two types of man-in-the-middle attacks:
-
-1.  ARP spoofing
-2.  DNS spoofing
-
-An HTTP proxy is used to intercept websites and inject javascript.
-
-A network sniffer is used to read authentication information.
-
 ### Environment:
 
 1. VirtualBox hardware abstraction
@@ -19,6 +10,7 @@ A network sniffer is used to read authentication information.
 
 1. Linux as the Attacker
 2. Windows 10 as the Victim
+3. Linux/NGINX as the server
 
 ### Attacker Configuration:
 

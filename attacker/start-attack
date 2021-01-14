@@ -9,7 +9,7 @@ readonly SCAN_DONE=2      # finished
 scan_state=$SCAN_ROUTER
 
 # find the host attacker ip
-host_ip=$(ip address |grep 'inet ' |grep -v host|xargs|cut -d " " -f 2|cut -d"/" -f1)t
+host_ip=$(ip address |grep 'inet ' |grep -v host|xargs|cut -d " " -f 2|cut -d"/" -f1)
 
 # find the network router ip
 router_ip=$(ip route |grep 'default'|cut -d " " -f 3)

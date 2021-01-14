@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>HackSite</title>
+    <style type="text/css">
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+    body > .container {
+      margin: 1rem auto;
+      width: 75%;
+    }
+    form > div {
+      display: flex;
+      margin-bottom: 0.8rem;
+      width: 50%;
+    }
+    form > div label {
+      min-width: 10rem;
+    }
+    form > div input {
+      flex-grow: 1;
+    }
+    form > div input[type="submit"] {
+      flex-grow: 0.4;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="container" id="shoulders">
+      <h1>Hack Site</h1>
+    </div>
+    <hr>
+    <div class="container" id="abdomen">
+      <p>This is a proxied hack site to display a man-in-the-middle attack.</p>
+
+      <form action="#" method="GET">
+        <div>
+          <label for="login">Login:</label>         
+          <input type="text" id="login"/>
+        </div>
+        <div>
+          <label for="password">Password:</label>
+          <input type="password" id="password"/>
+        </div>
+        <div>
+          <label for="submit"></label>
+          <input type="submit" value="Login"/>
+        </div>
+      </form>
+    </div>
+    <hr>
+    <div class="container" id="legs">
+      <small>
+        Ryan Jennings &copy; All Rights Reserved
+      </small>
+    </div>
+  </body>
+</html>

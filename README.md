@@ -1,10 +1,10 @@
 
-## MITM Demo
+## MITM Scenario
 
 ### Environment:
 
 1. VirtualBox hardware abstraction
-2. NAT Network abstraction
+2. Private network abstraction
 
 ### Actors:
 
@@ -18,3 +18,11 @@
 2. `ip` and `nmap` commands
 2. Bettercap installed (improved Ettercap)
 
+### Automation
+
+1. Vagrant infrastructure setup
+2. Attacker script
+    - scan router
+    - scan potential victims
+    - initiate attack
+3. main script for all of the above

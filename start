@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+for cmd in "vagrant vboxmanage"; do
+  type $cmd 2>&1 >/dev/null
+
+  if [ $? -ne 0 ]; then
+    echo "Please install $cmd for your system"
+    exit 1
+  fi
+done
+
+# provision the virtual machines
+vagrant up --provision
+
+[ $? -eq 0 ] || exit 1
+
+# open the victim to browse
+vboxmanage startvm --type gui mitm_victim
+
+# start the attack
+vagrant ssh -c '/data/start' attacker

@@ -3,8 +3,8 @@
 ## Tech Stack
 ryjen/mitm is built on the following main stack:
 
-- [Vagrant](http://www.vagrantup.com/) – Virtual Machine Management
 - [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) – Languages
+- [Vagrant](http://www.vagrantup.com/) – Virtual Machine Management
 - [Shell](https://en.wikipedia.org/wiki/Shell_script) – Shells
 
 Full tech stack [here](/techstack.md)
@@ -15,8 +15,8 @@ Full tech stack [here](/techstack.md)
 ## Tech Stack
 ryjen/mitm is built on the following main stack:
 
-- <img width='25' height='25' src='https://img.stackshare.io/service/768/150px-Vagrant.png' alt='Vagrant'/> [Vagrant](http://www.vagrantup.com/) – Virtual Machine Management
 - <img width='25' height='25' src='https://img.stackshare.io/service/1209/javascript.jpeg' alt='JavaScript'/> [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) – Languages
+- <img width='25' height='25' src='https://img.stackshare.io/service/768/150px-Vagrant.png' alt='Vagrant'/> [Vagrant](http://www.vagrantup.com/) – Virtual Machine Management
 - <img width='25' height='25' src='https://img.stackshare.io/service/4631/default_c2062d40130562bdc836c13dbca02d318205a962.png' alt='Shell'/> [Shell](https://en.wikipedia.org/wiki/Shell_script) – Shells
 
 Full tech stack [here](/techstack.md)
@@ -28,7 +28,7 @@ Full tech stack [here](/techstack.md)
 # Tech Stack File
 ![](https://img.stackshare.io/repo.svg "repo") [ryjen/mitm](https://github.com/ryjen/mitm)![](https://img.stackshare.io/public_badge.svg "public")
 <br/><br/>
-|4<br/>Tools used|01/23/24 <br/>Report generated|
+|4<br/>Tools used|02/29/24 <br/>Report generated|
 |------|------|
 </div>
 

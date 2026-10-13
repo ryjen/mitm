@@ -1,3 +1,6 @@
+# MITM scenario (historical security lab)
+
+> **Historical, unmaintained controlled lab.** Historical security lab intended for isolated, explicitly authorized virtual networks. Do not deploy or exercise this setup against third-party networks, devices, or services. Not a maintained penetration-testing toolkit.
 
 ## MITM Scenario
 
